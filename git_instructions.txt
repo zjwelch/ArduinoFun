@@ -1,0 +1,17 @@
+Basic Git cheat sheet:
+git status #shows current version status
+git init #create new git repo in current dir
+git add folder/file
+git commit -m "description"
+git log #change log
+git remote add origin https://github.com/zjwelch/ArduinoFun
+git push -u origin master #initial push staged changes
+git diff HEAD #show all differences
+git diff --staged #show all uncommited diffs
+git reset folder/file #clears the uncommited stage
+git checkout -- file  #rollback to last commited file version
+git checkout branchName #swtich to new branch
+git rm '*.file' #push file removal from branch
+git merge branchName #Merge branches and files
+git branch -d branchName #delete a branch
+git push #push all staged changes to current branch
