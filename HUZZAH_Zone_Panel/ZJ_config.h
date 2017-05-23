@@ -1,5 +1,7 @@
 /**************************************************************************
 
+  Copyright (C) 2017, Zachary J Welch, USA. All rights reserved.
+
   Written by:   Zachary J Welch
   Contributors: Jeremy Schiefer
   
