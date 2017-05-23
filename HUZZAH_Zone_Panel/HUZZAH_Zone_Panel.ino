@@ -1,7 +1,7 @@
 /*************************************************** 
 
   Copyright (C) 2017, Zachary J Welch, USA. All rights reserved.
-  
+
   Written by:   Zachary J Welch
   Contributors: Jeremy Schiefer
   
@@ -69,21 +69,38 @@
 
 #include "ZJ_config.h"
 
-int num = 0;
+//int num = 0;
 
 void setup() {
   
   Serial.begin(115200);
 
+  //Initialize DHT sensor
+  dht.begin();
+
   //Initialize the TFT Screen
-  //tft.begin();
+  spiBegin();
+  tft.begin();
   //tft.setRotation(1);
-  setOrientation(0);
+  //setOrientation(0);
   //tft.fillScreen(ILI9341_BLACK);
   tft.fillScreen(tft.BLACK);
+  tft.setTextColor(tft.WHITE,tft.BLACK);
+  tft.setCursor(0, 0);
+  tft.setTextSize(3);
+  tft.print("GUEST BEDROOM");
+  tft.setCursor(0, TEMP_Y);
+  tft.setTextSize(2);
+  tft.print("Temperature: ");
+  tft.setCursor(0, HUMD_Y);
+  tft.setTextSize(2);
+  tft.print("Humidiy: ");
 
   // connect to io.adafruit.com
   Serial.print("Connecting to Adafruit IO");
+  tft.setCursor(status_X,status_Y);
+  tft.setTextSize(1);
+  tft.print("Connecting to Adafruit IO");
   io.connect();
 
   // wait for a connection
@@ -95,6 +112,10 @@ void setup() {
   // we are connected
   Serial.println();
   Serial.println(io.statusText());
+  tft.setCursor(status_X,status_Y);
+  tft.setTextSize(1);
+  tft.print(io.statusText());
+  tft.println(" ");
 
   //Serial.print("Connecting to ");
   //Serial.println(ssid);
@@ -124,18 +145,18 @@ void setup() {
 void loop() {
 
   //Create SPI object
-  spiBegin();
+  //piBegin();
 
   //Initialize the screen object
-  tft.begin();
+  //tft.begin();
 
   io.run();
-  setOrientation(0);
+  //setOrientation(0);
   
 //  tft.fillScreen(ILI9341_BLACK);
 //  tft.setCursor(0, 0);
   
-  //sensors_event_t event;
+  sensors_event_t event;
   //htu.readTemperature().getEvent(&event);
 //  float temp = htu.readTemperature();
 
@@ -169,10 +190,50 @@ void loop() {
   //Serial.print("Temp: "); Serial.print(htu.readTemperature());
   //Serial.print("\t\tHum: "); Serial.println(htu.readHumidity());
 
-  tft.setCursor(130, 0);
-  tft.print(num);
-  num++;
+  //tft.setCursor(130, 0);
+  //tft.print(num);
+  //num++;
+  //delay(2000);
   
-  delay(2000);
+  //READ SENSOR DATA
+  float f = dht.readTemperature(true);
+  float h = dht.readHumidity();
+  temperature->save(f);
+  humidity->save(h);
   
+  // Check if any reads failed and exit early (to try again).
+  if (isnan(h) || isnan(f)) {
+    Serial.println("Failed to read from DHT sensor!");
+    return;
+  }
+
+  Serial.print("Humidity: ");
+  Serial.print(h);
+  Serial.print(" %\t");
+  Serial.print("Temperature: ");
+  Serial.print(f);
+  Serial.print(" *F\n");
+  
+  tft.setCursor(TEMP_X, TEMP_Y);
+  tft.setTextSize(2);
+  tft.print(f,1);
+  tft.setTextSize(1);
+  tft.print((char)223);
+  tft.setTextSize(2);
+  tft.print("F");
+
+  tft.setCursor(HUMD_X, HUMD_Y);
+  tft.print(h,1);
+  tft.print("%");
+
+  tft.setTextSize(1);
+  for (int i=10; i>=0; i--){
+    tft.setCursor(status_X,status_Y);
+    tft.print("Next update in ");
+    tft.print(i);
+    tft.print(" seconds.");
+    delay(1000);
+    }
+
+
 }
