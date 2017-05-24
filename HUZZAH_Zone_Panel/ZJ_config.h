@@ -3,7 +3,7 @@
   Copyright (C) 2017, Zachary J Welch, USA. All rights reserved.
 
   Written by:   Zachary J Welch
-  Contributors: Jeremy Schiefer
+  Contributors: srcnet2
   
   These functions are intended for use with HUZZAH FEATHER ESP8266 from adafruit (HFE)
 
@@ -65,5 +65,5 @@ AdafruitIO_WiFi io(IO_USERNAME, IO_KEY, WIFI_SSID, WIFI_PASS);
 //Adafruit_HTU21DF htu = Adafruit_HTU21DF();
 
 //Initialize the IO feeds
-AdafruitIO_Feed *temperature = io.feed("huzzah-temp");
-AdafruitIO_Feed *humidity = io.feed("huzzah-hum");
+AdafruitIO_Feed *temperature = io.feed("ComputerRoom-Temp01");
+AdafruitIO_Feed *humidity = io.feed("ComputerRoom-Humd01");

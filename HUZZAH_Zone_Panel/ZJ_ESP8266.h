@@ -3,7 +3,7 @@
   Copyright (C) 2017, Zachary J Welch, USA. All rights reserved.
 
   Written by:   Zachary J Welch
-  Contributors: Jeremy Schiefer
+  Contributors: srcnet2
   
   This library is based on the HUZZAH FEATHER ESP8266 adafruit board (HFE)
 
