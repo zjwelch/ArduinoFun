@@ -53,7 +53,7 @@ void protoThread::resetTimer( void ){
   try {
   
     //if the requested timer length saddles the rollover
-    if( ( millisMax - startTime ) >= timerLength ){
+    if( ( millisMax - startTime ) <= timerLength ){
       throw ( millisMax - startTime );
     } else {
       endTime = startTime + timerLength;
@@ -72,17 +72,32 @@ void protoThread::resetTimer( void ){
 
 boolean protoThread::check( void ){
 
+  unsigned long currTime = millis();
+  
   try {
-    if( !( millisMax - startTime >= endTime ) ){
+    if( currTime >= endTime ){
+      resetTimer();
+      currTime.clear();
+      return 1;
+    } else if( currTime() < endTime ){
+      return 0;
+    } else if (rolledTime > 0){
+      throw 1;
+    } else {
+      throw 0;
+    }
     
-  } catch {
+  } catch (int err){
+  
+   if( err = 1 ){
+     
+     //mis rollover
+     !( millisMax - startTime >= endTime ) )
+   }
+   resetTimer();
+   return 0;
   }
-  if(){
-    protoThread::reset();
-    return 1;
-  } else {
-    return 0;
-  }
+  return 0;
 }
 
 void protoThread::~setTimer( void ){
