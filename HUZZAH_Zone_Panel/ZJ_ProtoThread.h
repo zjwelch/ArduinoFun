@@ -79,10 +79,13 @@ boolean protoThread::check( void ){
       resetTimer();
       currTime.clear();
       return 1;
+    
     } else if( currTime() < endTime ){
       return 0;
+    
     } else if (rolledTime > 0){
       throw 1;
+    
     } else {
       throw 0;
     }
@@ -91,8 +94,11 @@ boolean protoThread::check( void ){
   
    if( err = 1 ){
      
-     //mis rollover
-     !( millisMax - startTime >= endTime ) )
+     //millis rollover
+     if( (rolledTime + currTime) >= timerLength ){   
+       resetTimer();
+       return 1;
+     }
    }
    resetTimer();
    return 0;
