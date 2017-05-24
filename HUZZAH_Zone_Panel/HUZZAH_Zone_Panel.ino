@@ -7,40 +7,6 @@
   
   This build is for the HUZZAH FEATHER ESP8266 adafruit board (HFE)
 
-  Attached devices:
-
-  2.4" TFT FeatherWing ILI9341 Touchscreen (TFT)
-
-    *Connections are hard bonded due to rear mounting and defined in config.h
-    TFT STMPE_CS -> HFE 16
-    TFT TFT_CS   -> HFE 0
-    TFT TFT_DC   -> HFE 15
-    TFT SD_CS    -> HFE 2
-    //Used simultaneously for touch input and/or SD card read
-    TFT MISO     -> HFE MISO/12
-    TFT MOSI     -> HFE MOSI/13
-    TFT SCK      -> HFE SCK/14
-  
-  HTU21D-F Humidity & Temp Sensor (HTH)
-
-    HTH VIN -> HFE 3V
-    HTH GND -> HFE GND
-    HTH SDA -> HFE SDA/4
-    HTH SCL -> HFE SCL/5
-
-  GA1A1S202WP Log-scale Analog Light Sensor (GLAL)
-
-    GLAL VCC -> HTH 3V3
-    GLAL OUT -> HFE 2 (GPIO)
-    GLAL GND -> HFE ?
-
-  SPW2430 Silicon MEMS Microphone (SSMM)
-
-  PIR Motion Sensor (PMS)
-
-  Power provided by USB 5v power AND/OR LiPoly 3.7v 1200mAh battery
-  connected to LM3671 3.3v Buck Converter Breakout - 600mA max
-
   ****************** Description ********************
 
   + completed  - pending  ! acknowledged bug  * self note
