@@ -21,6 +21,7 @@
 
  ***********************************************************************/
 
+/*
 #include <SPI.h>
 #include <Ethernet.h>
 #include <EthernetUdp.h>
@@ -76,7 +77,7 @@ void loop() {
   delay(10);
 }
 
-
+*/
 /*
   Processing sketch to run with this example
  =====================================================
