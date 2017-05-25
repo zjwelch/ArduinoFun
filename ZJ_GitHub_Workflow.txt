@@ -26,7 +26,7 @@ Revision history
 Known issues/bugs
 
 
-GitHub Pages shall contain:
+GitHub Projects Page used for:
 
 Fork and branch documentation (internal communication)
 Request for Documenation (RFD)
