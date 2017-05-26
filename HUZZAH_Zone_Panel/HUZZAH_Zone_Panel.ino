@@ -83,6 +83,12 @@ void setup() {
   tft.print(io.statusText());
   tft.println(" ");
 
+  //UDP connection to node.js server
+  Serial.println("Connecting to node.js");
+  Udp.begin(arduinoPort);
+  Serial.println("Connected");
+  
+
   //Serial.print("Connecting to ");
   //Serial.println(ssid);
   
@@ -164,14 +170,30 @@ void loop() {
   //READ SENSOR DATA
   float f = dht.readTemperature(true);
   float h = dht.readHumidity();
-  temperature->save(f);
-  humidity->save(h);
-  
+
   // Check if any reads failed and exit early (to try again).
   if (isnan(h) || isnan(f)) {
     Serial.println("Failed to read from DHT sensor!");
     return;
   }
+
+  //SAVE TO ADAFRUIT.IO
+  temperature->save(f);
+  humidity->save(h);
+
+  //SEND TO NODE.JS
+  Udp.beginPacket(receiverIP, receiverPort); //start udp packet
+
+  //MAKE JSON TO SEND VIA UDP
+  String line;
+  line = ("{\"boardID\":001 \"temperature\":");
+  line += String(f,1);
+  line += (" \"humidity\":");
+  line += String(h,1);
+  line += "}";
+  
+  Udp.print(line);
+  Udp.endPacket(); // end packet
 
   Serial.print("Humidity: ");
   Serial.print(h);
