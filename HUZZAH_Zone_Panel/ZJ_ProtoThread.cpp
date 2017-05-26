@@ -1,4 +1,4 @@
-#include "protoThread.h"
+/*#include "protoThread.h"
 
 void protoThread::protoThread( void ){
   //millis() will eventually rollover back to zero. This is to account for that
@@ -74,3 +74,4 @@ void protoThread::~setTimer( void ){
   millisMax.clear();
   
 }
+*/
