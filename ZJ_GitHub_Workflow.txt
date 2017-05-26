@@ -1,0 +1,33 @@
+HVAC Analytics and Logistics (HAL) System Project Overview:
+
+Code Projects:
+
+ESP8266 Zone_Panel_System (Arduino/C++)
+RPi3 Zone_Control_Logic (Arduino/C++)
+RPi3 Zone_Controller_System (Python)
+RPi3 Zone_Controller_Framework (Node.js)
+RPi3 Zone_Control_UI (?)
+
+Each branch has a Readme that contains:
+
+Brief codebase description/summary
+Project sources (URLS)
+Copywrite/Contributors information
+Current branch versioning
+New issues/bugs
+Disclaimers
+
+Each Project Wiki contains:
+
+Project Overview
+General instructions
+Documentation
+Revision history
+Known issues/bugs
+
+
+GitHub Projects Page used for:
+
+Fork and branch documentation (internal communication)
+Request for Documenation (RFD)
+Merge/push request notes/messages
