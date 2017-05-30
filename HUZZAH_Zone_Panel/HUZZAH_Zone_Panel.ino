@@ -42,7 +42,8 @@ void setup() {
   Serial.begin(115200);
 
   //Initialize DHT sensor
-  dht.begin();
+  //dht.begin();
+  htu.begin();
 
   //Initialize the TFT Screen
   spiBegin();
@@ -123,15 +124,15 @@ void loop() {
 //  tft.setCursor(0, 0);
   
   sensors_event_t event;
-  //htu.readTemperature().getEvent(&event);
-//  float temp = htu.readTemperature();
+  htu.readTemperature().getEvent(&event);
+  float temp = htu.readTemperature();
 
-  //float celsius = event.temperature;
-//  float celsius = temp;
-//  float fahrenheit = (celsius * 1.8) + 32;
+  float celsius = event.temperature;
+  float celsius = temp;
+  float fahrenheit = (celsius * 1.8) + 32;
 
-  //htu.readHumidity().getEvent(&event);
-//  float humi = htu.readHumidity();
+  htu.readHumidity().getEvent(&event);
+  float humi = htu.readHumidity();
 
 /*
   tft.setTextColor(ILI9341_BLUE);
@@ -141,10 +142,10 @@ void loop() {
   tft.setTextColor(ILI9341_GREEN);
   tft.setTextSize(6);
   tft.print(humi);tft.println("%");
-
+*/
   //debug
-  Serial.print("fahrenheit: ");Serial.print(fahrenheit);Serial.println("F");
-  Serial.print("humidity: ");Serial.print(humi);Serial.println("%");
+  //Serial.print("fahrenheit: ");Serial.print(fahrenheit);Serial.println("F");
+  //Serial.print("humidity: ");Serial.print(humi);Serial.println("%");
 
   // save fahrenheit (or celsius) to Adafruit IO
   temperature->save(fahrenheit);
@@ -152,32 +153,27 @@ void loop() {
   // save humidity to Adafruit IO
   //humidity->save(event.relative_humidity);
   humidity->save(humi);
-*/
+  
   //Serial.print("Temp: "); Serial.print(htu.readTemperature());
   //Serial.print("\t\tHum: "); Serial.println(htu.readHumidity());
 
-  //tft.setCursor(130, 0);
-  //tft.print(num);
-  //num++;
-  //delay(2000);
-  
   //READ SENSOR DATA
-  float f = dht.readTemperature(true);
-  float h = dht.readHumidity();
-  temperature->save(f);
-  humidity->save(h);
+  //float f = dht.readTemperature(true);
+  //float h = dht.readHumidity();
+  //temperature->save(f);
+  //humidity->save(h);
   
   // Check if any reads failed and exit early (to try again).
-  if (isnan(h) || isnan(f)) {
+  /*if (isnan(h) || isnan(f)) {
     Serial.println("Failed to read from DHT sensor!");
     return;
-  }
+  }*/
 
   Serial.print("Humidity: ");
-  Serial.print(h);
+  Serial.print(humi);
   Serial.print(" %\t");
   Serial.print("Temperature: ");
-  Serial.print(f);
+  Serial.print(fahrenheit);
   Serial.print(" *F\n");
   
   tft.setCursor(TEMP_X, TEMP_Y);

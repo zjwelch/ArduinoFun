@@ -30,13 +30,13 @@
   
  ****************************************************/
 
-//#include "Adafruit_HTU21DF.h"
-#include "DHT.h"
+#include "Adafruit_HTU21DF.h"
+//#include "DHT.h"
 
 #define DHTPIN 4
 #define DHTTYPE DHT11
 //#define DHTTYPE DHT22
 //#define DHTTYPE DHT21
 
-DHT dht(DHTPIN, DHTTYPE);
-    
+//DHT dht(DHTPIN, DHTTYPE);
+Adafruit_HTU21DF htu = Adafruit_HTU21DF();

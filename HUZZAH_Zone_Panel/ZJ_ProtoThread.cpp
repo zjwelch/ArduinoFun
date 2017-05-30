@@ -1,4 +1,4 @@
-#include "protoThread.h"
+#include "ZJ_ProtoThread.h"
 
 void protoThread::protoThread( void ){
   //millis() will eventually rollover back to zero. This is to account for that
