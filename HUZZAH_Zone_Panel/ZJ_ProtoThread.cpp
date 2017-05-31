@@ -1,76 +1,61 @@
 #include "ZJ_ProtoThread.h"
 
-void protoThread::protoThread( void ){
+protoThread::protoThread(){
   //millis() will eventually rollover back to zero. This is to account for that
-  unsigned long millisMax = 2147483647;
-  unsigned long rolledTime = 0;
+  millisMax = 2147483647;
+  rolledTime = 0;
 }
+
 void protoThread::setTimer( unsigned long timer ) {
   timerLength = timer;
   resetTimer();
   
 }
+
 void protoThread::resetTimer( void ){
+
+  unsigned long rollTime = 0;
   startTime = millis();
   
-  try {
-  
-    //if the requested timer length saddles the rollover
-    if( ( millisMax - startTime ) <= timerLength ){
-      throw ( millisMax - startTime );
-    } else {
+  //if the requested timer length saddles the rollover
+  if( ( millisMax - startTime ) <= timerLength ){
+    rollTime = ( millisMax - startTime );
+  } else {
       endTime = startTime + timerLength;
       rolledTime = 0;
-    }
-  }  
-  catch ( unsigned long rollTime ){
+  }
+  
+  if ( rollTime != 0 ){
   
     //store the amount before the roll and set the timer for after the roll
     rolledTime = rollTime;
     endTime = ( timerLength - rollTime );
-  
   }
+  
   return;
 }
-boolean protoThread::check( void ){
+
+bool protoThread::checkTimer( void ){
   unsigned long currTime = millis();
   
-  try {
-    if( currTime >= endTime ){
-      resetTimer();
-      currTime.clear();
-      return 1;
+  if( currTime >= endTime ){
+    resetTimer();
+    return true;
     
-    } else if( currTime() < endTime ){
-      return 0;
+  } else if( currTime < endTime ){
+      return false;
     
     } else if (rolledTime > 0){
-      throw 1;
-    
-    } else {
-      throw 0;
-    }
-    
-  } catch (int err){
-  
-   if( err = 1 ){
-     
-     //millis rollover
-     if( (rolledTime + currTime) >= timerLength ){   
-       resetTimer();
-       return 1;
-     }
-   }
-   resetTimer();
-   return 0;
+      if( (rolledTime + currTime) >= timerLength ){   
+        resetTimer();
+        return true;
+      } else {
+        resetTimer();
+        return false;
+      }    
+  } else {
+    resetTimer();
+    return false;
   }
-  return 0;
-}
-void protoThread::~setTimer( void ){
-  
-  timer.clear();
-  startTime.clear();
-  rolledTime.clear();
-  millisMax.clear();
-  
+  return false;
 }
