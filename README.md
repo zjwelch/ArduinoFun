@@ -42,7 +42,7 @@
   +Open a feed session with http://io.adafruit.com
   +Push data points to io.adafruit feed on timer
 
-  ****************** DISCLAIMER ********************
+****************** DISCLAIMER ********************
 
 IN NO EVENT SHALL REGENTS BE LIABLE TO ANY PARTY FOR DIRECT, INDIRECT,
 SPECIAL, INCIDENTAL, OR CONSEQUENTIAL DAMAGES, INCLUDING LOST PROFITS,
