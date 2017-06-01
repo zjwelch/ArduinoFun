@@ -24,7 +24,7 @@
   
   Version control:
   
-  / + completed  - pending  ! acknowledged bug  * self note /
+  //+ completed  - pending  ! acknowledged bug  * self note 
 
   vA0.1.1 - First steps
 
