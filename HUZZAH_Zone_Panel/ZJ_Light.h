@@ -30,4 +30,22 @@
   
  ****************************************************/
 
+/*
+
+#ifndef ZJ_LIGHT_H
+#define ZJ_LIGHT_H
+
+#define ANALOG_INPUT_PIN 15;
+
+//#include <wire.h>
  
+class lightSensor {
+  
+  private:
+  
+  public:
+  
+  
+  };
+  
+#endif
