@@ -30,13 +30,72 @@
   
  ****************************************************/
 
-//#include "Adafruit_HTU21DF.h"
-#include "DHT.h"
+#include "Adafruit_HTU21DF.h"
+//#include "DHT.h"
 
 #define DHTPIN 4
 #define DHTTYPE DHT11
 //#define DHTTYPE DHT22
 //#define DHTTYPE DHT21
 
-DHT dht(DHTPIN, DHTTYPE);
+//DHT dht(DHTPIN, DHTTYPE);
+Adafruit_HTU21DF htu = Adafruit_HTU21DF();
+
+/*  New class code
+
+#ifndef ZJ_HEAT_HUM_H
+#define ZJ_HEAT_HUM_H
+
+//#define 
+
+/////////////////////
+
+#include <adafruit_HTU21DF.h>
+
+class heatHumSensor {
+
+  private:
+  
+    Adafruit_HTU21DF sensor;
+  
+  public:
     
+    heatHumSensor();
+    float getC();
+    float getF();
+    float getH();
+
+};
+
+#endif
+
+#include "ZJ_HEAT_HUM_H"
+
+heatHumSensor::heatHumSensor() {
+
+  sensor = Adafruit_HTU21DF();
+
+}
+
+float heatHumSensor::getC( void ) {
+
+  celcius = sensor.readTemperature();
+  return celcius;
+
+}
+
+float heatHumSensor::getF( void ) {
+
+  faranheit = (( sensor.readTemperature() * 1.8 ) + 32 );
+  return faranheit;
+
+}
+
+float heatHumSensor::getH( void ) {
+
+  humidity = sensor.readHumidity();
+  return humidity;
+
+}
+
+*/

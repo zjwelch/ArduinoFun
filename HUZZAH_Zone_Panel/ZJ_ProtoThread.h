@@ -4,10 +4,11 @@ Protothreading is timed mutlitasking
 
 **************************/
 
-/*
 
+#include <Arduino.h>
 #include <time.h>
-#include <millis.h>
+//#include <Wire.h>
+
 
 class protoThread {
 
@@ -22,11 +23,10 @@ class protoThread {
   public:
     
     void setTimer( unsigned long timerLength );
-    boolean checkTimer();
+
+    bool checkTimer();
     void resetTimer();
     protoThread();
-    ~protoThread();
     
 };
 
-*/
