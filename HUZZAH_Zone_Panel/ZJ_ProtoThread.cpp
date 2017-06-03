@@ -26,10 +26,13 @@ void protoThread::resetTimer( void ){
   }
   
   if ( rollTime != 0 ){
+
   
     //store the amount before the roll and set the timer for after the roll
     rolledTime = rollTime;
     endTime = ( timerLength - rollTime );
+
+
   }
   
   return;

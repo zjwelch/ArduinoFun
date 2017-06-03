@@ -34,6 +34,8 @@
 #include <Adafruit_Sensor.h>
 #include <ESP8266WiFi.h>
 #include "AdafruitIO_WiFi.h"
+#include "ZJ_UDPdata.h"
+
 //#include <Adafruit_GFX.h>
 //#include <Adafruit_ILI9341.h>
 //#include "ILI9341_t3.h"
