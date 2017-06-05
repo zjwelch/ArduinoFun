@@ -34,23 +34,24 @@
 
  #ifndef ZJ_Motion_H
  #define ZJ_Motion_H
+ #define PIR_INTPUT_PIN "12";
 
  /////////////////////////////////////////////////////
 
- include <time.h>
+ include <Wire.h>
 
  class PIR_Sensor
  {
   private:
   
-    bool activity;
-    double seconds;
-    time_t timer;
+    int input;
+    int pinState;
 
   public:
 
-    bool isActive();
-    void motionDetected();
+    void PIR_Sensor();
+    bool motionDetected();
     
- }
+ };
 
+#endif
