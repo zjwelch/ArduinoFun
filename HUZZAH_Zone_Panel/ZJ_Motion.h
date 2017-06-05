@@ -34,7 +34,7 @@
 
  #ifndef ZJ_Motion_H
  #define ZJ_Motion_H
- #define PIR_INTPUT_PIN "12";
+ #define PIR_INTPUT_PIN 12;
 
  /////////////////////////////////////////////////////
 
