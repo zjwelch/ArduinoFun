@@ -15,3 +15,6 @@ git rm '*.file' #push file removal from branch
 git merge branchName #Merge branches and files
 git branch -d branchName #delete a branch
 git push #push all staged changes to current branch
+git checkout # update all github files locally (github wins)
+git checkout BranchName #switch to different remote branch
+git reset --hard origin/BranchName #overwrite all local files with remote versions
