@@ -6,43 +6,27 @@
   Contributors: srcnet2
   
   These functions are intended for use with HUZZAH FEATHER ESP8266 from adafruit (HFE)
-
-
- ****************** Description ********************
-
-  + completed  - pending  ! acknowledged bug  * self note
-
-  Core Sketchfile to accomplish the following:
-
-  vA0.1.1 - Cleanup
-
-  -After working base demo, cleanup and remove any unneeded references/calls
-  -build prototype stubs for project specific functions and classes
-  
-  vA0.1.0 - Test/Demo
-
-  +Include initial libraries
-  +Configure basic constructors for the various devices and sensors
-
- ***********************************************************************/
+**/
 
 //#include <sstream>
 
 #include <sstream>
 
+#include <SPI.h>
 #include <Wire.h>
+
 #include <Adafruit_Sensor.h>
 #include <ESP8266WiFi.h>
 #include "AdafruitIO_WiFi.h"
 #include "ZJ_UDPdata.h"
+#include "ZJ_Display.h"
+#include "ZJ_Heat_Hum.h"
 
-//#include <Adafruit_GFX.h>
-//#include <Adafruit_ILI9341.h>
+
 //#include "ILI9341_t3.h"
 //#include "Adafruit_HTU21DF.h"
 //#include "ZJ_ESP8266.h"
-#include "ZJ_Display.h"
-#include "ZJ_Heat_Hum.h"
+
 //#include "ZJ_Light.h"
 //#include "ZJ_Motion.h"
 //#include "ZJ_Sound.h"
