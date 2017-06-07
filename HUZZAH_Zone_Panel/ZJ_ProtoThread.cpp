@@ -6,7 +6,7 @@ protoThread::protoThread(){
   rolledTime = 0;
 }
 
-void protoThread::setTimer( unsigned long timer ) {
+void protoThread::setTimer( const unsigned long timer ) {
   timerLength = timer;
   resetTimer();
   

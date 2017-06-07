@@ -23,16 +23,16 @@
   
  ****************************************************/
 
- #ifndef ZJ_Motion_H
- #define ZJ_Motion_H
- #define PIR_INTPUT_PIN 12;
+#ifndef ZJ_Motion_H
+#define ZJ_Motion_H
+#define PIR_INTPUT_PIN 12;
 
- /////////////////////////////////////////////////////
+/////////////////////////////////////////////////////
 
- include <Wire.h>
+include <Wire.h>
 
- class PIR_Sensor
- {
+class PIR_Sensor {
+  
   private:
   
     int input;

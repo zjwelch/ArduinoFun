@@ -30,37 +30,26 @@
   
  ****************************************************/
 
-#include "Adafruit_HTU21DF.h"
-//#include "DHT.h"
-
-#define DHTPIN 4
-#define DHTTYPE DHT11
-//#define DHTTYPE DHT22
-//#define DHTTYPE DHT21
-
-//DHT dht(DHTPIN, DHTTYPE);
-Adafruit_HTU21DF htu = Adafruit_HTU21DF();
-
-/*  New class code
-
 #ifndef ZJ_HEAT_HUM_H
 #define ZJ_HEAT_HUM_H
 
-//#define 
+#define DHTPIN 4
+#define DHTTYPE DHT11
 
 /////////////////////
 
-#include <adafruit_HTU21DF.h>
+#include "Adafruit_HTU21DF.h"
+#include "DHT.h"
 
 class heatHumSensor {
 
   private:
   
-    Adafruit_HTU21DF sensor;
+    varchar(3) sensorType;
   
   public:
     
-    heatHumSensor();
+    void heatHumSensor( varchar(3) type );
     float getC();
     float getF();
     float getH();
@@ -71,14 +60,30 @@ class heatHumSensor {
 
 #include "ZJ_HEAT_HUM_H"
 
-heatHumSensor::heatHumSensor() {
+void heatHumSensor::heatHumSensor( varchar(3) type ) {
 
-  sensor = Adafruit_HTU21DF();
+  if( type == 'DHT' ) {
 
+    sensorType = type;
+    DHT genericDHT(DHTPIN, DHTTYPE);
+    sensor = static_cast<DHT>(*sensor);
+    *sensor = &genricDHT;
+    
+  } else if ( type == 'HTU' ) {
+
+    Adafruit_HTU21DF genericHTU = Adafruit_HTU21DF();
+    sensor = static_cast<Adafruit_HTU21DF>(*sensor);
+    *sensor = &Adafruit_HTU21DF;
+    
+  }
+  
+  return false;
+  
 }
 
 float heatHumSensor::getC( void ) {
 
+  
   celcius = sensor.readTemperature();
   return celcius;
 
@@ -98,4 +103,4 @@ float heatHumSensor::getH( void ) {
 
 }
 
-*/
+

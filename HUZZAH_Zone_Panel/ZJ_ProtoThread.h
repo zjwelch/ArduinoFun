@@ -22,7 +22,7 @@ class protoThread {
     
   public:
     
-    void setTimer( unsigned long timerLength );
+    void setTimer( const unsigned long timerLength );
 
     bool checkTimer();
     void resetTimer();
